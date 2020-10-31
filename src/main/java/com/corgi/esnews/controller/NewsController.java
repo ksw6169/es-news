@@ -1,6 +1,7 @@
 package com.corgi.esnews.controller;
 
-import com.corgi.esnews.dto.NewsDto;
+import com.corgi.esnews.dto.SearchDto;
+import com.corgi.esnews.entity.News;
 import com.corgi.esnews.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,20 +15,14 @@ public class NewsController extends BaseController {
 
     private final NewsService newsService;
 
-    @RequestMapping(value = "/v1/news", method = RequestMethod.GET)
-    public void getNews() {
-
+    @RequestMapping(value = "/api/v1/news", method = RequestMethod.GET)
+    public News searchNews(SearchDto searchDto) throws Exception {
+        return newsService.searchNews(searchDto);
     }
 
-    @RequestMapping(value = "/v1/news", method = RequestMethod.POST)
-    public ResponseEntity createNews(NewsDto newsDto) {
-        newsService.createNews(newsDto);
+    @RequestMapping(value = "/api/v1/news", method = RequestMethod.POST)
+    public ResponseEntity createNews(SearchDto searchDto) {
+        newsService.createNews(searchDto);
         return responseSuccess();
     }
-
-
-
-
-
-
 }

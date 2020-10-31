@@ -16,7 +16,6 @@ public class SwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.corgi.esnews.controller"))
-//                .paths(PathSelectors.any())
                 .build();
     }
 }
