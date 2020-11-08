@@ -33,7 +33,6 @@ import java.util.*;
 public class EsManager {
 
     private static EsConfiguration configuration;
-    private RestHighLevelClient client;
 
     private static RestHighLevelClient getClient() {
         return getClient(Arrays.asList(
@@ -45,7 +44,7 @@ public class EsManager {
                 RestClient.builder(hosts.toArray(new HttpHost[0])));
     }
 
-    public boolean exist(String index, String id) {
+    public boolean exists(String index, String id) {
 
         GetRequest request = new GetRequest(index, id);
 
